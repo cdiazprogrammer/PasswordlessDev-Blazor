@@ -22,7 +22,7 @@ namespace PasswordlessDevServerSide.Controllers
         public async Task<HttpResponseMessage> CheckAuth([FromQuery] string token)
         {
             var apiUrl = "https://v4.passwordless.dev";
-            var apiSecret = "apitest:secret:9eed4d0237064e91bbc51f296d21058d";
+            var apiSecret = "TODO [Your API Secret Here]";
 
             var client = new HttpClient();
 
