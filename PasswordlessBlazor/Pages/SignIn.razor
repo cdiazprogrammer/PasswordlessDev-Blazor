@@ -1,0 +1,29 @@
+﻿@page "/signin"
+@inject HttpClient Http
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Sign in</PageTitle>
+
+<h1>Passwordless.Dev Sign In page</h1>
+<button @onclick="invokePasswordlessDev">Sign In with passwordlessDev</button>
+
+@code {
+
+    private async Task invokePasswordlessDev()
+    {
+        var token = await JSRuntime.InvokeAsync<string>("getPasswordlessDevToken");
+
+        if (token != null)
+        {
+            var resp = await Http.GetAsync($"https://localhost:7041/SignIn?Token={token}");
+
+            if (!resp.IsSuccessStatusCode)
+            {
+                //Display an error message if authenticating doesn't succeed
+            }
+        } else
+        {
+            //User cancelled passwordlessDev input
+        }
+    }
+}

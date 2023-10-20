@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@passwordlessdev/passwordless-client": "^1.1.0"
+  }
+}
